@@ -59,6 +59,110 @@ ggplot(
   mapping = aes(x = flipper_length_mm, y = body_mass_g)
 ) +
   #### Local level
-  geom_point(mapping = aes(color= species)) +
+  geom_point(mapping = aes(color= species, shape = species)) +
   geom_smooth(method = "lm")
+
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point(mapping = aes(color= species, shape = species)) +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "Body Mass & Flipper Length",
+    subtitle = "Dimensions for Adelie Chinstrap and Gentoo Penguins",
+    x = "Flipper Length (mm)",
+    y = "Body Mass (g)",
+    color = "Species",
+    shape = "Species"
+    ) +
+  scale_color_colorblind()
+
+### Exercises
+
+#### 1) -> 8 columns
+View(penguins)
+
+#### 2)
+ggplot(
+  data = penguins,
+  mapping = aes(x = bill_depth_mm, y = bill_length_mm, color = species)
+) +
+  geom_point()
+
+#### 4) -> It shown a vertical relationship visualization
+ggplot(
+  data = penguins,
+  mapping = aes(x = species, y = bill_depth_mm, color = species)
+) +
+  geom_point()
+
+#### 5) -> Error in `geom_point()`:
+ggplot(
+  data = penguins
+) + 
+  geom_point()
+
+#### 9) -> 
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = island)
+) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+
+#### 10) ->
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point() +
+  geom_smooth()
+
+ggplot() +
+  geom_point(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  ) +
+  geom_smooth(
+    data = penguins,
+    mapping = aes(x = flipper_length_mm, y = body_mass_g)
+  )
+
+### ggplot2 Calls
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g)
+) +
+  geom_point()
+
+
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+
+#### -> with pipeline
+penguins |>
+  ggplot(aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+
+## Visualization Distribution
+
+### A Categorical Variable
+ggplot(penguins, aes(x = species)) +
+  geom_bar()
+
+ggplot(penguins, aes(x = fct_infreq(species))) +
+  geom_bar()
+
+
+
+
+
+
+
+
+
+
+
+
 
