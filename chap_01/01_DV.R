@@ -154,14 +154,92 @@ ggplot(penguins, aes(x = species)) +
 ggplot(penguins, aes(x = fct_infreq(species))) +
   geom_bar()
 
+### A Numerical Variable
+ggplot(penguins, 
+       aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 200)
 
+ggplot(penguins,
+       aes(x = body_mass_g)) +
+  geom_histogram(binwidth = 2000)
 
+#### -> Density plot
+ggplot(penguins,
+       aes(x = body_mass_g)) +
+  geom_density()
 
+### Exercise
+#### 1) ->
+ggplot(penguins,
+       aes(x = fct_infreq(species))) +
+  geom_bar()
 
+#### 2) -> The second option
+ggplot(penguins,
+       aes(x = species)) +
+  geom_bar(color = "red")
 
+ggplot(penguins,
+       aes(x = species)) +
+  geom_bar(fill = "red")
 
+#### 4) ->
+ggplot(diamonds,
+       aes(x = carat)) +
+  geom_histogram(binwidth = 0.5, fill = "darkgreen")
 
+## Visualizing Relationships
 
+### A Numerical & Categorical Variable
+ggplot(penguins,
+       aes(x = species, y = body_mass_g)) +
+  geom_boxplot()
+
+#### -> Alternative with `geom_density`:
+ggplot(penguins,
+       aes(x = body_mass_g, color = species)) +
+  geom_density(linewidth = 0.75)
+
+ggplot(penguins,
+       aes(x = body_mass_g, color = species, fill = species)) +
+  geom_density(alpha = 0.5)
+
+### Two Categorical Variables
+ggplot(penguins,
+       aes(x = island, fill = species)) +
+  geom_bar()
+
+ggplot(penguins,
+       aes(x = island, fill = species)) +
+  geom_bar(position = "fill")
+
+### Two Numerical Variables
+ggplot(penguins,
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+
+### Three or More Variables
+ggplot(penguins,
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = island))
+
+ggplot(penguins,
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, shape = species)) +
+  facet_wrap(~island)
+
+# Saving Plots
+ggplot(penguins, 
+       aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point()
+ggsave(filename = "penguin-plot.png")
+
+ggplot(mpg,
+       aes(x = class)) +
+  geom_bar()
+ggplot(mpg, aes(x = cty, y = hwy)) +
+  geom_point()
+ggsave("mpg-plot.png")
 
 
 
