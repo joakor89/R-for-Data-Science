@@ -19,3 +19,33 @@ primes - 1
 
 ### Comments
 
+#### Creating  Vector of Primes Numbers
+primes <- c(2, 3, 5, 7, 11, 13)
+
+primes * 2
+
+### What's in a Name
+
+i_use_snake_case
+otherPeopleUseCamelCase
+some.people.use.periods
+And_aFew.People_RENOUNCEconvention
+
+x
+
+this_is_a_really_long_name <- 3.5
+
+r_rocks <- 2^3
+
+r_rock
+
+R_rocks
+
+#### 
+
+
+
+
+
+
+
