@@ -41,11 +41,15 @@ r_rock
 
 R_rocks
 
-#### 
+### Calling Functions
 
+seq(from = 1, to = 10)
 
+seq(1, 10)
 
+x <- "Hello world"
 
+x
 
 
 
