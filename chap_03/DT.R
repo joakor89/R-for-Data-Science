@@ -106,13 +106,20 @@ flights |>
     .keep = "used"
   )
 
+#### select()
+flights |>
+  select(year, month, day)
 
+flights |>
+  select(year:day)
 
+flights |>
+  select(!year:day)
 
+flights |>
+  select(where(is.character))
 
+?select
 
-
-
-
-
-
+flights |>
+  select(tail_num = tailnum)
