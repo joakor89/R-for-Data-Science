@@ -139,4 +139,45 @@ flights |>
 flights |>
   relocate(starts_with("arr"), .before = dep_time)
 
-### 
+### The Pipe
+
+flights |>
+  filter(dest == "IAH") |>
+  mutate(speed = distance / air_time * 60) |>
+  select(year:day, dep_time, carrier, flight, speed) |>
+  arrange(desc(speed))
+
+arrange(
+  select(
+    mutate(
+      filter(
+        flights,
+        dest == "AIH"
+      ),
+      speed = distance / air_time * 60
+    ),
+    year:day, dep_time, carrier, flight, speed
+  ),
+  desc(speed)
+)
+
+flights1 <- filter(flights, dest == "AIH")
+flights2 <- mutate(flights1, speed = distance / air_time * 60)
+flights3 <- select(flights2, year:day, dep_time, carrier, flight, speed)
+arrange(flights3, desc(speed))
+
+##### magrittr
+library(tidyverse)
+
+mtcars %>%
+  group_by() %>%
+  summarize(n =n())
+
+
+
+
+
+
+
+
+
