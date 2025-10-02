@@ -43,6 +43,15 @@ flights |>
 jan1 <- flights |>
   filter(month == 1 & day == 1)
 
+### Common Mistakes
+
+flights |>
+  filter(month = 1)
+
+flights |>
+  filter(month == 1 | 2)
+
+#### arrange()
 
 
 
