@@ -24,3 +24,29 @@ flights |>
     arr_delay = mean(arr_delay, na.rm = TRUE)
   )
 
+### Rows
+
+#### filter()
+
+flights |>
+  filter(dep_delay > 120)
+
+flights |>
+  filter(month == 1 & day == 1)
+
+flights |> 
+  filter(month == 1 | month == 2)
+
+flights |>
+  filter(month %in% c(1, 2))
+
+jan1 <- flights |>
+  filter(month == 1 & day == 1)
+
+
+
+
+
+
+
+
