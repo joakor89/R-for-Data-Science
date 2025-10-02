@@ -206,12 +206,17 @@ flights %>%
   slice_max(arr_delay, n = 1) %>% 
   relocate(dest)
 
+#### Grouping by Multiple Variables
 
+daily <- flights %>% 
+  group_by(year, month, day) 
 
+daily
 
+daily_flights <- flights %>% 
+  summarize(n = n())
 
-
-
+daily_flights
 
 
 
