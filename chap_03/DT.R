@@ -186,6 +186,34 @@ flights %>%
     avg_delay = mean(dep_delay)
   )
 
+flights %>% 
+  group_by(month) %>% 
+  summarize(
+    delay = mean(dep_delay, na.rm = TRUE)
+  )
+
+flights %>% 
+  group_by(month) %>%
+  summarize(
+    delay = mean(dep_delay, na.rm = TRUE),
+    n = n()
+  )
+
+#### The slice_Functions
+
+flights %>% 
+  group_by(dest) %>% 
+  slice_max(arr_delay, n = 1) %>% 
+  relocate(dest)
+
+
+
+
+
+
+
+
+
 
 
 
