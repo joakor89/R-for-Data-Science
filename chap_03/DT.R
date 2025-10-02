@@ -73,14 +73,38 @@ flights |>
 flights |> 
   count(origin, dest, sort = TRUE)
 
+### Columns
+
+#### mutate()
+
+flights |>
+  mutate(
+    gain = dep_delay - arr_delay,
+    speed = distance / air_time * 60
+  )
+
+flights |>
+  mutate(
+    gain = dep_time - arr_delay,
+    speed = distance / air_time * 60,
+    .before = 1
+  )
+
+flights |>
+  mutate(
+    gain = dep_time - arr_delay,
+    speed = distance / air_time * 60,
+    .after = day
+  )
 
 
-
-
-
-
-
-
+flights |>
+  mutate(
+    gain = dep_time - arr_delay,
+    hours = air_time / 60,
+    gain_per_hour = gain / hours,
+    .keep = "used"
+  )
 
 
 
