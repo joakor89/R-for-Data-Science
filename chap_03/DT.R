@@ -59,5 +59,36 @@ flights |>
 flights |>
   arrange(desc(dep_delay))
 
+#### distinct()
+
+flights |>
+  distinct()
+
+flights |>
+  distinct(origin, dest)
+
+flights |> 
+  distinct(origin, dest, .keep_all = TRUE)
+
+flights |> 
+  count(origin, dest, sort = TRUE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
