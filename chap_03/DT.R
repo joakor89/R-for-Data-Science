@@ -218,8 +218,16 @@ daily_flights <- flights %>%
 
 daily_flights
 
+#### Ungrouping
 
+daily %>% 
+  ungroup()
 
-
+daily %>% 
+  ungroup() %>% 
+  summarize(
+    avg_delay = mean(dep_delay, na.rm = TRUE),
+    flights = n()
+  )
 
 
