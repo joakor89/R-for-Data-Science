@@ -53,9 +53,11 @@ flights |>
 
 #### arrange()
 
+flights |>
+  arrange(year, month, day, dep_time)
 
-
-
+flights |>
+  arrange(desc(dep_delay))
 
 
 
