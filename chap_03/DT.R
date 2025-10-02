@@ -173,9 +173,18 @@ mtcars %>%
   group_by() %>%
   summarize(n =n())
 
+### Groups
 
+#### group_by()
+flights %>% 
+  group_by(month)
 
-
+#### summarize()
+flights %>% 
+  group_by(month) %>% 
+  summarize(
+    avg_delay = mean(dep_delay)
+  )
 
 
 
