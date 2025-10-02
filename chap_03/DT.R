@@ -230,4 +230,18 @@ daily %>%
     flights = n()
   )
 
+#### .by
+flights %>% 
+  summarize(
+    delay = mean(dep_delay, na.rm = TRUE),
+    n = n(),
+    .by = month
+  )
+
+flights %>% 
+  summarize(
+    delay = mean(dep_delay, na.rm = TRUE),
+    n = n(),
+    .by = c(origin, dest)
+  )
 
