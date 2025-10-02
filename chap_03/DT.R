@@ -123,3 +123,9 @@ flights |>
 
 flights |>
   select(tail_num = tailnum)
+
+#### rename()
+
+flights |>
+  rename(tail_num = tailnum)
+
