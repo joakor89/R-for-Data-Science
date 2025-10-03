@@ -36,9 +36,41 @@ flights %>%
 
 flights %>% filter(!is.na(arr_delay), !is.na(tailnum)) %>% count(dest) # and avoid this
 
+flights %>% 
+  group_by(tailnum) %>% 
+  summarize(
+    delay = mean(arr_delay, na.rm = TRUE),
+    n = n()
+  ) # strive for this
 
+flights %>% 
+  group_by(
+    tailnum
+  ) %>% 
+  summarize(delay = mean(arr_delay, na.rm = TRUE), n = n()) # and avoid this
 
+flights %>% 
+  group_by(tailnum) %>% 
+  summarize(
+    delay = mean(arr_delay, na.rm = TRUE),
+    n = n()
+  ) # strive for this
 
+flights %>% 
+  group_by(tailnum) %>% 
+  summarize(
+              delay = mean(arr_delay, na.rm = TRUE),
+              n = n()
+            ) # and avoid this
+
+flights %>% 
+  group_by(tailnum) %>% 
+  summarize(
+    delay = mean(arr_delay, na.rm = TRUE),
+    n = n()
+  )
+
+### 
 
 
 
