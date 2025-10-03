@@ -70,6 +70,33 @@ flights %>%
     n = n()
   )
 
+### ggplot2
+
+flights %>% 
+  group_by(month) %>% 
+  summarize(
+    delay = mean(arr_delay, na.rm = TRUE)
+  ) %>% 
+  ggplot(aes(x = month, y = delay)) +
+  geom_point() +
+  geom_line()
+
+flights %>% 
+  group_by(dest) %>% 
+  summarize(
+    distance = mean(distance),
+    speed = mean(distance / air_time, na.rm = TRUE)
+  ) %>% 
+  ggplot(aes(x = distance, y = speed)) +
+  geom_smooth(
+    method = "loess",
+    span = 0.5,
+    se = FALSE,
+    color = "white",
+    linewidth = 4
+  ) +
+  geom_point()
+
 ### 
 
 
