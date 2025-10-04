@@ -68,8 +68,19 @@ billboard_longer %>%
 
 #### How Does Pivoting Work?
 
+df <- tribble(
+  ~id, ~bp1, ~bp2,
+  "A", 100, 120,
+  "B", 140, 115,
+  "C", 120, 125
+)
 
-
+df %>% 
+  pivot_longer(
+    cols = bp1:bp2,
+    names_to = "measurement",
+    values_to = "value"
+  )
 
 
 
