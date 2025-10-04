@@ -82,6 +82,34 @@ df %>%
     values_to = "value"
   )
 
+#### Many Variables in Column Names
+
+who2
+
+who2 %>% 
+  pivot_longer(
+    cols = !(country:year),
+    names_to = c("diagnosis", "gender", "age"),
+    names_sep = "_",
+    values_to = "count"
+  )
+
+#### Data & Variable Names in The Column Headers
+
+household
+
+household %>% 
+  pivot_longer(
+    cols = !family,
+    names_to = c(".value", "child"),
+    names_sep = "_",
+    values_drop_na = TRUE
+  )
+
+
+
+
+
 
 
 
