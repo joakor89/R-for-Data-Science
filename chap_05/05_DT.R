@@ -61,5 +61,19 @@ billboard_longer <- billboard %>%
 
 billboard_longer
 
+billboard_longer %>% 
+  ggplot(aes(x = week, y = rank, group = track)) +
+  geom_line(alpha = 0.25) +
+  scale_y_reverse()
+
+#### How Does Pivoting Work?
+
+
+
+
+
+
+
+
 
 
