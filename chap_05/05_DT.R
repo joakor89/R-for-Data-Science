@@ -106,13 +106,25 @@ household %>%
     values_drop_na = TRUE
   )
 
+### Widening Data
 
+cms_patient_experience
 
+cms_patient_experience %>% 
+  distinct(measure_cd, measure_title)
 
+cms_patient_experience %>% 
+  pivot_wider(
+    names_from = measure_cd,
+    values_from = prf_rate
+  )
 
-
-
-
+cms_patient_experience %>% 
+  pivot_wider(
+    id_cols = starts_with("org"),
+    names_from = measure_cd,
+    values_from = prf_rate
+  )
 
 
 
