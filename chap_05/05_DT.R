@@ -126,5 +126,58 @@ cms_patient_experience %>%
     values_from = prf_rate
   )
 
+#### How Does pivot_wider() Work?
+
+df <- tribble (
+  ~id, ~measurement, ~value,
+  "A",        "bp1",    100,
+  "B",        "bp1",    140,
+  "B",        "bp2",    115,
+  "A",        "bp2",    120,
+  "A",        "bp3",    105
+)
+
+df %>% 
+  pivot_wider(
+    names_from = measurement,
+    values_from = value
+  )
+
+df %>% 
+  distinct(measurement) %>% 
+  pull()
+
+df %>% 
+  select(-measurement, -value) %>% 
+  distinct()
+
+df %>% 
+  select(-measurement, -value) %>% 
+  distinct() %>% 
+  mutate(x = NA, y = NA, z = NA)
+
+df <- tribble(
+  ~id, ~measurement, ~value,
+  "A",        "bp1",    100,
+  "A",        "bp1",    102,
+  "A",        "bp2",    120,
+  "B",        "bp1",    140,
+  "B",        "bp2",    115
+)
+
+df %>% 
+  pivot_wider(
+    names_from = measurement,
+    values_from = value
+  )
+
+df %>% 
+  group_by(id, measurement) %>% 
+  summarize(n = n(), .groups = "drop") %>% 
+  filter(n > 1)
+
+
+
+
 
 
