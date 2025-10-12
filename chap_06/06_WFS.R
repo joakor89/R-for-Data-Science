@@ -14,6 +14,11 @@ not_cancelled %>%
   summarize(mean = mean(dep_delay))
 
 
+### Where Does Your Analysis Live?
+
+getwd()
+
+### RStudio Projects
 
 
 
