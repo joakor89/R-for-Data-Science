@@ -26,7 +26,7 @@ library(tidyverse)
 
 ggplot(diamonds, aes(x = carat, y = price)) +
   geom_hex()
-ggsave("diamonds.png")
+ggsave("/Users/joaquinromero/desktop/R4DS/chap_06/diamonds.png")
 
 write_csv(diamonds, "/Users/joaquinromero/desktop/R4DS/data/diamonds.csv")
 
