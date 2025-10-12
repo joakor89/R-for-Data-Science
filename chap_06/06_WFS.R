@@ -18,7 +18,16 @@ not_cancelled %>%
 
 getwd()
 
+
+
 ### RStudio Projects
 
 library(tidyverse)
+
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_hex()
+ggsave("diamonds.png")
+
+write_csv(diamonds, "/Users/joaquinromero/desktop/R4DS/data/diamonds.csv")
+
 
