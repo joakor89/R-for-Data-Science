@@ -24,3 +24,28 @@ students %>%
     full_name = `Full Name`
   )
 
+students %>% janitor::clean_names()
+
+students %>% 
+  janitor::clean_names() %>% 
+  mutate(meal_plan = factor(meal_plan))
+
+students <- students %>% 
+  janitor::clean_names() %>% 
+  mutate(
+    meal_plan = factor(meal_plan),
+    age = parse_number(if_else(age == "five", "5", age))
+  )
+
+students
+
+
+
+
+
+
+
+
+
+
+
