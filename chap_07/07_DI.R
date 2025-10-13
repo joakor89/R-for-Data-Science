@@ -135,6 +135,31 @@ sales_files <- c(
 
 read_csv(sales_files, id = "file")
 
+sales_files <- list.files("data", pattern = "\\.csv$", full.names = TRUE)
+
+sales_files
+
+### Writing to a File
+
+write_csv(students, "/Users/joaquinromero/desktop/R4DS/data/students.csv")
+
+students
+
+write_csv(students, "/Users/joaquinromero/desktop/R4DS/data/students-2.csv")
+
+read_csv("/Users/joaquinromero/desktop/R4DS/data/students-2.csv")
+
+write_rds(students, "/Users/joaquinromero/desktop/R4DS/data/students.rds")
+
+read_rds("/Users/joaquinromero/desktop/R4DS/data/students.rds")
+
+library(arrow)
+
+write_parquet(students, "/Users/joaquinromero/desktop/R4DS/data/students.parquet")
+
+read_parquet("/Users/joaquinromero/desktop/R4DS/data/students.parquet")
+
+### 
 
 
 
