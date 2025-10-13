@@ -74,5 +74,62 @@ read_csv(
   col_names = c("x", "y", "z")
 )
 
-### 
+## Controlling Column Types
+
+### Guessing Types
+
+read_csv("
+         logical,numeric,date,string
+         TRUE,1,2021-01-15,abc
+         false,4.5,2021-02-15,def
+         T,Inf,2021-02-16,ghi
+         ")
+
+### Missing Values, Column Types & Problems
+
+simple_csv <- "
+x
+10
+,
+20
+30"
+
+read_csv(simple_csv)
+
+df <- read_csv(
+  simple_csv,
+  col_types = list(x = col_double())
+)
+
+problems(df)
+
+read_csv(simple_csv, na = ".")
+
+another_csv <- "
+x,y,z
+1,2,3"
+
+read_csv(
+  another_csv,
+  col_types = cols(.default = col_character())
+)
+
+read_csv(
+  another_csv,
+  col_types = cols_only(x = col_character())
+)
+
+## 
+
+
+
+
+
+
+
+
+
+
+
+
 
