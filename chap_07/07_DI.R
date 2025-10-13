@@ -119,13 +119,21 @@ read_csv(
   col_types = cols_only(x = col_character())
 )
 
-## 
+## Reading Data from Multiple Files
 
+sales_files <- c("/Users/joaquinromero/desktop/R4DS/data/01-sales.csv",
+                 "/Users/joaquinromero/desktop/R4DS/data/02-sales.csv",
+                 "/Users/joaquinromero/desktop/R4DS/data/03-sales.csv")
 
+read_csv(sales_files, id = "file")
 
+sales_files <- c(
+  "https://pos.it/r4ds-01-sales",
+  "https://pos.it/r4ds-02-sales",
+  "https://pos.it/r4ds-03-sales"
+)
 
-
-
+read_csv(sales_files, id = "file")
 
 
 
