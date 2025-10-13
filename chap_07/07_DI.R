@@ -159,10 +159,19 @@ write_parquet(students, "/Users/joaquinromero/desktop/R4DS/data/students.parquet
 
 read_parquet("/Users/joaquinromero/desktop/R4DS/data/students.parquet")
 
-### 
+### Data Entry
 
+tibble(
+  x = c(1, 2, 5),
+  y = c("h", "m", "g"),
+  z = c(0.08, 0.83, 0.6)
+)
 
-
-
+tribble(
+  ~x, ~y, ~z,
+  1, "h", 0.08,
+  2, "m", 0.83,
+  5, "g", 0.60
+)
 
 
