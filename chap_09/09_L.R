@@ -108,15 +108,33 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point() +
   facet_grid(drv ~ cyl, scales = "free_y")
 
+### Statistical Transformations
 
+ggplot(diamonds, aes(x = cut)) +
+  geom_bar()
 
+diamonds %>% 
+  count(cut) %>% 
+  ggplot(aes(x = cut, y = n)) +
+  geom_bar(stat = "identity")
 
+ggplot(diamonds, aes(x = cut, y = after_stat(prop), group = 1)) +
+  geom_bar()
 
+ggplot(diamonds) +
+  stat_summary(
+    aes(x = cut, y = depth),
+    fun.min = min,
+    fun.max = max,
+    fun = median
+  )
 
+ggplot(diamonds, aes(x = cut, y = after_stat(prop))) +
+  geom_bar()
+ggplot(diamonds, aes(x = cut, fill = color, y = after_stat(prop))) +
+  geom_bar()
 
-
-
-
+###
 
 
 
