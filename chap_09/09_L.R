@@ -177,11 +177,27 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 
 ?position_stack
 
-###
+### Coordinate Systems
 
+nz <- map_data("nz")
 
+ggplot(nz, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill = "white", color = "black")
 
+ggplot(nz, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill = "white", color = "black") +
+  coord_quickmap()
 
+bar <- ggplot(data = diamonds) +
+  geom_bar(
+    mapping = aes(x = clarity, fill = clarity),
+    show.legend = FALSE,
+    width = 1
+  ) +
+  theme(aspect.ratio = 1)
+
+bar + coord_flip()
+bar + coord_polar()
 
 
 
