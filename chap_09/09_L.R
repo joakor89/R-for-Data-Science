@@ -134,8 +134,50 @@ ggplot(diamonds, aes(x = cut, y = after_stat(prop))) +
 ggplot(diamonds, aes(x = cut, fill = color, y = after_stat(prop))) +
   geom_bar()
 
-###
+### Position Adjustments
 
+##### Left 
+ggplot(mpg, aes(x = drv, color = drv)) +
+  geom_bar()
+
+##### Right
+ggplot(mpg, aes(x = drv, fill = drv)) +
+  geom_bar()
+
+##### Stacking
+ggplot(mpg, aes(x = drv, fill = class)) +
+  geom_bar()
+
+##### Left 
+ggplot(mpg, aes(x = drv, fill = class)) +
+  geom_bar(alpha = 1/5, position = "identity")
+
+##### Right
+ggplot(mpg, aes(x = drv, color= class)) +
+  geom_bar(fill = NA, position = "identity")
+
+##### Left 
+ggplot(mpg, aes(x = drv, fill = class)) +
+  geom_bar(position = "fill")
+
+##### Right
+ggplot(mpg, aes(x = drv, fill = class)) +
+  geom_bar(position = "dodge")
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(position = "jitter")
+
+?position_dodge
+
+?position_fill
+
+?position_identity
+
+?position_jitter
+
+?position_stack
+
+###
 
 
 
