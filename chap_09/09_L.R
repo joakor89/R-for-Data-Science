@@ -94,11 +94,19 @@ library(ggridges)
 ggplot(mpg, aes(x = hwy, y = drv, fill = drv, color = drv)) +
   geom_density_ridges(alpha = 0.5, show.legend = FALSE)
 
+### Facets
 
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_wrap(~cyl)
 
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_grid(drv ~ cyl)
 
-
-
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  facet_grid(drv ~ cyl, scales = "free_y")
 
 
 
