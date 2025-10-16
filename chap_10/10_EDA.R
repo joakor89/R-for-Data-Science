@@ -77,8 +77,20 @@ ggplot(mpg, aes(x = fct_reorder(class, hwy, median), y = hwy)) +
 ggplot(mpg, aes(x = hwy, y = fct_reorder(class, hwy, median))) +
   geom_boxplot()
 
-###
+### Two Categorical Variables
 
+ggplot(diamonds, aes(x = cut, y = color)) +
+  geom_count()
+
+diamonds %>% 
+  count(color, cut)
+
+diamonds %>% 
+  count(color, cut) %>% 
+  ggplot(aes(x = color, y = cut)) +
+  geom_tile(aes(fill = n))
+
+### Two Numerical Variables
 
 
 
