@@ -92,11 +92,20 @@ diamonds %>%
 
 ### Two Numerical Variables
 
+ggplot(smaller, aes(x = carat, y = price)) +
+  geom_point()
 
+ggplot(smaller, aes(x = carat, y = price)) +
+  geom_point(alpha = 1 / 100)
 
+ggplot(smaller, aes(x = carat, y = price)) +
+  geom_bin2d()
 
+ggplot(smaller, aes(x = carat, y = price)) +
+  geom_hex()
 
-
+ggplot(smaller, aes(x = carat, y = price)) +
+  geom_boxplot(aes(group = cut_width(carat, 0.1)))
 
 
 
