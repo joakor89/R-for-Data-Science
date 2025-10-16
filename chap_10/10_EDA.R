@@ -55,7 +55,41 @@ nycflights13::flights %>%
   ggplot(aes(x = sched_dep_time)) +
   geom_freqpoly(aes(color = cancelled), binwidth = 1/4)
 
-### 
+### Co-variation
+
+#### A Categorical & a Numerical Variable
+
+ggplot(diamonds, aes(x = price)) +
+  geom_freqpoly(aes(color = cut), binwidth = 500, linewidth = 0.75)
+
+ggplot(diamonds, aes(x = price, y = after_stat(density))) +
+  geom_freqpoly(aes(color = cut), binwidth = 500, linewidth = 0.75)
+
+ggplot(diamonds, aes(x = cut, y = price)) +
+  geom_boxplot()
+
+ggplot(mpg, aes(x = class, y = hwy)) +
+  geom_boxplot()
+
+ggplot(mpg, aes(x = fct_reorder(class, hwy, median), y = hwy)) +
+  geom_boxplot()
+
+ggplot(mpg, aes(x = hwy, y = fct_reorder(class, hwy, median))) +
+  geom_boxplot()
+
+###
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
