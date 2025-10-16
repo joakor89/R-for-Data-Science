@@ -107,8 +107,27 @@ ggplot(smaller, aes(x = carat, y = price)) +
 ggplot(smaller, aes(x = carat, y = price)) +
   geom_boxplot(aes(group = cut_width(carat, 0.1)))
 
+### Pattern & Models
 
+library(tidymodels)
 
+diamonds <- diamonds %>% 
+  mutate(
+    log_price = log(price),
+    log_carat = log(carat),
+  )
+
+diamonds_fit <- linear_reg() %>% 
+  fit(log_price ~ log_carat, data = diamonds)
+
+diamonds_aug <- augment(diamonds_fit, new_data = diamonds) %>% 
+  mutate(.resid = exp(.resid))
+
+ggplot(diamonds_aug, aes(x = carat, y = .resid)) +
+  geom_point()
+
+ggplot(diamonds_aug, aes(x = cut, y = .resid)) +
+  geom_boxplot()
 
 
 
