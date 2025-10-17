@@ -151,9 +151,82 @@ presidential %>%
   geom_segment(aes(xend = end, yend = id)) +
   scale_x_date(name = NULL, breaks = presidential$start, date_labels = "'%y")
 
-#### Le
+#### Legend Layout
 
+base <- ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = class))
 
+base + theme(legend.position = "right")
+base + theme(legend.position = "left")
+base +
+  theme(legend.position = "top") +
+  guides(col = guide_legend(nrow = 3))
+base +
+  theme(legend.position = "bottom") +
+  guides(col = guide_legend(nrow = 3))
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = class)) +
+  geom_smooth(se = FALSE) +
+  theme(legend.position = "bottom") +
+  guides(color = guide_legend(nrow = 2, override.aes = list(size = 4)))
+
+#### Replacing a Scale
+
+##### Left
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_bin2d()
+
+##### Right
+ggplot(diamonds, aes(x = log10(carat), y = log10(price))) +
+  geom_bin2d()
+
+ggplot(diamonds, aes(x = carat, y = price)) +
+  geom_bin2d() +
+  scale_x_log10() +
+  scale_y_log10()
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = drv))
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = drv)) +
+  scale_color_brewer(palette = "Set1")
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = drv, shape = drv)) +
+  scale_color_brewer(palette = "Set1")
+
+presidential %>% 
+  mutate(id = 33 + row_number()) %>% 
+  ggplot(aes(x = start, y = id, color = party)) +
+  geom_point() +
+  geom_segment(aes(xend = end, yend = id)) +
+  scale_color_manual(values = c(Republican = "#E81B23", Democratic = "#00AEF3"))
+
+df <- tibble(
+  x = rnorm(10000),
+  y = rnorm(10000)
+)
+
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  coord_fixed() +
+  labs(title = "Default, continuous", x = NULL, y = NULL)
+
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  coord_fixed() +
+  scale_fill_viridis_c() +
+  labs(title = "Viridis, continuous", x = NULL, y = NULL)
+
+ggplot(df, aes(x, y)) +
+  geom_hex() +
+  coord_fixed() +
+  scale_fill_viridis_b() +
+  labs(title = "Viridis, binned", x = NULL, y = NULL)
+
+#### Zooming 
 
 
 
