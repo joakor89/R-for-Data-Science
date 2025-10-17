@@ -102,9 +102,17 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 
 ### Scales
 
+#### Default Scales
+
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = class))
 
 
-
+ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(color = class)) +
+  scale_x_continuous() +
+  scale_y_continuous() +
+  scale_color_discrete()
 
 
 
