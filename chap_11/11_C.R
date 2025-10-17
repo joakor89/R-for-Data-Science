@@ -114,19 +114,44 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
   scale_y_continuous() +
   scale_color_discrete()
 
+#### Axis Ticks & Legend Keys
 
+ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
+  geom_point() +
+  scale_y_continuous(breaks = seq(15, 40, by = 5))
 
+ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
+  geom_point() +
+  scale_x_continuous(labels = NULL) +
+  scale_y_continuous(labels = NULL) +
+  scale_color_discrete(labels = c("4" = "4-wheel", "f" = "front", "r" = "rear"))
 
+##### Left
+ggplot(diamonds, aes(x = price, y = cut)) +
+  geom_point(alpha = 0.05) +
+  scale_x_continuous(labels = label_dollar())
 
+##### Right
 
+ggplot(diamonds, aes(x = price, y = cut)) +
+  geom_boxplot(alpha = 0.05) +
+  scale_x_continuous(
+    labels = label_dollar(scale = 1/1000, suffix = "k"),
+    breaks = seq(1000, 19000, by = 6000)
+  )
 
+ggplot(diamonds, aes(x = cut, fill = clarity)) +
+  geom_bar(position = "fill") +
+  scale_y_continuous(name = "Percentage", labels = label_percent())
 
+presidential %>% 
+  mutate(id = 33 + row_number()) %>% 
+  ggplot(aes(x = start, y = id)) +
+  geom_point() +
+  geom_segment(aes(xend = end, yend = id)) +
+  scale_x_date(name = NULL, breaks = presidential$start, date_labels = "'%y")
 
-
-
-
-
-
+#### Le
 
 
 
