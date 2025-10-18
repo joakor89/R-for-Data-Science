@@ -306,12 +306,55 @@ ggplot(mpg, aes(x = displ, y = hwy, color = drv)) +
     plot.caption = element_text(hjust = 0)
   )
 
-### 
+### Layout
 
+p1 <- ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point() +
+  labs(title = "Plot 1")
 
+p2 <- ggplot(mpg, aes(x = drv, y = hwy)) +
+  geom_boxplot() +
+  labs(title = "Plot 2")
 
+p1 + p2
 
+p3 <- ggplot(mpg, aes(x = cty, y =hwy)) +
+  geom_point() +
+  labs(title = "Plot 3")
 
+(p1 | p3) / p2
+
+p1 <- ggplot(mpg, aes(x = drv, y = cty, color = drv)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(title = "Plot 1")
+
+p2 <- ggplot(mpg, aes(x = drv, y = hwy, color = drv)) +
+  geom_boxplot(show.legend = FALSE) +
+  labs(title = "Plot 2")
+
+p3 <- ggplot(mpg, aes(x = cty, color = drv, fill = drv)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Plot 3")
+
+p4 <- ggplot(mpg, aes(x = hwy, color = drv, fill = drv)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Plot 4")
+
+p5 <- ggplot(mpg, aes(x = cty, y = hwy, color = drv)) +
+  geom_point(show.legend = FALSE) +
+  facet_wrap(~drv) +
+  labs(title = "Plot 5")
+
+(guide_area() / (p1 + p2) / (p3 + p4) / p5) +
+  plot_annotation(
+    title = "City and highway mileage for cars with different drivetrains",
+    caption = "Source: https://fueleconomy.gov."
+  ) +
+  plot_layout(
+    guides = "collect",
+    heights = c(1, 3, 2, 4)
+  ) &
+  theme(legend.position = "top")
 
 
 
