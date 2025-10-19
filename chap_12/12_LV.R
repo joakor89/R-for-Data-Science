@@ -226,8 +226,14 @@ flights %>%
     .keep = "used"
   )
 
-####
+#### Compatible Types
 
+if_else(TRUE, "a", 1)
+
+case_when(
+  x < -1 ~ TRUE,
+  x > 0 ~ now()
+)
 
 
 
