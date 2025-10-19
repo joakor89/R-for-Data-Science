@@ -128,10 +128,19 @@ c(1, 2, NA) %in% NA
 flights %>% 
   filter(dep_time %in% c(NA, 0800))
 
+### Summaries
 
+#### Logical Summaries
 
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarize(
+    all_delayed = all(dep_delay <= 60, na.rm = TRUE),
+    any_long_delay = any(arr_delay >= 300, na.rm = TRUE),
+    .groups = "drop"
+  )
 
-
+#### 
 
 
 
