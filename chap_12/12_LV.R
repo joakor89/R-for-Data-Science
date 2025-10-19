@@ -150,9 +150,25 @@ flights %>%
     .groups = "drop"
   )
 
+# Logical Sub-setting
 
+flights %>% 
+  filter(arr_delay > 0) %>% 
+  group_by(year, month, day) %>% 
+  summarize(
+    behind = mean(arr_delay),
+    n = n(),
+    .groups = "drop"
+  )
 
-
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarize(
+    behind = mean(arr_delay[arr_delay > 0], na.rm = TRUE),
+    ahead = mean(arr_delay[arr_delay < 0], na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  )
 
 
 
