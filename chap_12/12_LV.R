@@ -45,7 +45,22 @@ print(x, digits = 16)
 
 near(x, c(1, 2))
 
+#### Missing Values
 
+NA > 5
+
+##### 10 == NA
+
+##### NA == NA
+
+age_mary <- NA
+
+age_john <- NA
+
+age_mary == age_john
+
+##### flights %>% 
+##### filter(dep_time == NA)
 
 
 
