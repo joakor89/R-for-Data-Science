@@ -170,12 +170,24 @@ flights %>%
     .groups = "drop"
   )
 
+### Conditional Transformations
 
+#### if_else()
 
+x <- c(-3:3, NA)
 
+if_else(x > 0, "+ve", "-ve", "???")
 
+if_else(x < 0, -1, x)
 
+x1 <- c(NA, 1, 2, NA)
+y1 <- c(3, NA, 4, 6)
 
+if_else(is.na(x1), y1, x1)
+
+if_else(x == 0, "0", if_else(x < 0, "-ve", "ve"), "???")
+
+#### 
 
 
 
