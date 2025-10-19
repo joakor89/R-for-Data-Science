@@ -62,12 +62,28 @@ age_mary == age_john
 ##### flights %>% 
 ##### filter(dep_time == NA)
 
+#### is.na()
 
+is.na(c(TRUE, NA, FALSE))
 
+is.na(c(1, NA, 3))
 
+is.na(c("a", NA, "b"))
 
+flights %>% 
+  filter(is.na(dep_time))
 
+flights %>% 
+  filter(month == 1, day == 1) %>% 
+  arrange(dep_time)
 
+flights %>% 
+  filter(month == 1, day == 1) %>% 
+  arrange(dep_time)
+
+flights %>% 
+  filter(month == 1, day == 1) %>% 
+  arrange(desc(is.na(dep_time)), dep_time)
 
 
 
