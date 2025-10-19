@@ -140,7 +140,16 @@ flights %>%
     .groups = "drop"
   )
 
-#### 
+#### Numeric Summaries of Logical Vectors
+
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarize(
+    all_delayed = mean(dep_delay <= 60, na.rm = TRUE),
+    any_long_delay = sum(arr_delay >= 300, na.rm = TRUE),
+    .groups = "drop"
+  )
+
 
 
 
