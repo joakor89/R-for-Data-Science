@@ -85,8 +85,19 @@ flights %>%
   filter(month == 1, day == 1) %>% 
   arrange(desc(is.na(dep_time)), dep_time)
 
+### Boolean Algebra
 
+#### Missing Values
 
+df <- tibble(x = c(TRUE, FALSE, TRUE))
+
+df %>% 
+  mutate(
+    and = x & NA,
+    or = x | NA
+  )
+
+#### Order of
 
 
 
