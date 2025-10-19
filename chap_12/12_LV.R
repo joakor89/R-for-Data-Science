@@ -33,10 +33,17 @@ flights %>%
   ) %>% 
   filter(daytime & approx_ontime)
 
-####
+#### Floating-Point Comparison
 
+x <- c(1 / 49 * 49, sqrt(2) ^2)
 
+x
 
+x == c(1, 2)
+
+print(x, digits = 16)
+
+near(x, c(1, 2))
 
 
 
