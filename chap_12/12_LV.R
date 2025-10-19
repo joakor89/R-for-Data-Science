@@ -97,14 +97,36 @@ df %>%
     or = x | NA
   )
 
-#### Order of
+#### Order of Operations
 
+flights %>% 
+  filter(month == 11 | month == 12)
 
+flights %>% 
+  filter(month == 11 | 12)
 
+flights %>% 
+  mutate(
+    nov = month == 11,
+    final = nov | 12,
+    .keep = "used"
+  )
 
+#### %in%
 
+1:12 %in% c(1, 5, 11)
 
+letters[1:10] %in% c("a", "e", "i", "o", "u")
 
+flights %>% 
+  filter(month %in% c(11, 12))
+
+c(1, 2, NA) == NA
+
+c(1, 2, NA) %in% NA
+
+flights %>% 
+  filter(dep_time %in% c(NA, 0800))
 
 
 
