@@ -187,12 +187,46 @@ if_else(is.na(x1), y1, x1)
 
 if_else(x == 0, "0", if_else(x < 0, "-ve", "ve"), "???")
 
-#### 
+#### case_when()
 
+x <- c(-3:3, NA)
+case_when(
+  x == 0 ~ "0",
+  x < 0 ~ "-ve",
+  x > 0 ~ "+ve",
+  is.na(x) ~ "???"
+)
 
+case_when(
+  x < 0 ~ "ve",
+  x > 0 ~ "+ve"
+)
 
+case_when(
+  x < 0 ~ "ve",
+  x > 0 ~ "+ve",
+  TRUE ~ "???"
+)
 
+case_when(
+  x < 0 ~ "+ve",
+  x > 2 ~ "big"
+)
 
+flights %>% 
+  mutate(
+    status = case_when(
+      is.na(arr_delay) ~ "cancelled",
+      arr_delay < -30 ~ "very early",
+      arr_delay < -15 ~ "early",
+      abs(arr_delay) <= 15 ~ "on time",
+      arr_delay < 60 ~ "late",
+      arr_delay < Inf ~ "very late",
+    ),
+    .keep = "used"
+  )
+
+####
 
 
 
