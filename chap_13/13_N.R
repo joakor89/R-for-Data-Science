@@ -43,12 +43,23 @@ flights %>%
   group_by(dest) %>% 
   summarize(n_cancelled = sum(is.na(dep_time)))
 
+### Numeric Transformation
+
+#### Arithmetic & Recycling Rules
+
+x <- c(1, 2, 10, 20)
+
+x / 5
 
 
+x / c(5, 5, 5, 5)
 
+x * c(1, 2)
 
+x * c(1 , 2, 3)
 
-
+flights %>% 
+  filter(month == c(1, 2))
 
 
 
