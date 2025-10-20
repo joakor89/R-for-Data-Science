@@ -178,11 +178,19 @@ df %>%
     cume_dist = cume_dist(x)
   )
 
+#### Offsets
+
+x <- c(2, 5, 11, 19, 35)
+lag(x)
+
+lead(x)
+
+x - lag(x)
+
+x == lag(x)
 
 
-
-
-
+#### Consecutive Identifiers
 
 
 
