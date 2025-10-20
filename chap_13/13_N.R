@@ -158,11 +158,25 @@ cummin(x)
 
 cummax(x)
 
+### General Transformations
 
+#### Ranks
 
+x <- c(1, 2, 2, 3, 4, NA)
 
+min_rank(x)
 
+min_rank(desc(x))
 
+df <- tibble(x = x)
+
+df %>% 
+  mutate(
+    row_number = row_number(x),
+    dense_rank = dense_rank(x),
+    dense_rank = percent_rank(x),
+    cume_dist = cume_dist(x)
+  )
 
 
 
