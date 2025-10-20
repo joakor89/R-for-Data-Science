@@ -102,24 +102,35 @@ flights %>%
   geom_line(color = "grey50") +
   geom_point(aes(size = n))
 
+#### Rounding
 
+round(123.456)
 
+round(123.456, 2)
 
+round(123.456, 1)
 
+round(123.456, -1)
 
+round(123.456, -2)
 
+round(c(1.5, 2.5))
 
+x <- 123.456
 
+floor(x)
 
+ceiling(x)
 
+floor(x / 0.01) * 0.01
 
+ceiling(x / 0.01) * 0.01
 
+round(x / 4) * 4
 
+round(x / 0.25) * 0.25
 
-
-
-
-
+####
 
 
 
