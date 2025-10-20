@@ -51,7 +51,6 @@ x <- c(1, 2, 10, 20)
 
 x / 5
 
-
 x / c(5, 5, 5, 5)
 
 x * c(1, 2)
@@ -61,10 +60,28 @@ x * c(1 , 2, 3)
 flights %>% 
   filter(month == c(1, 2))
 
+#### Minimum & Maximum 
 
+df <- tribble(
+  ~x, ~y,
+  1, 3,
+  5, 2,
+  7, NA,
+)
 
+df %>% 
+  mutate(
+    min = pmin(x, y, na.rm = TRUE),
+    max = pmax(x, y, na.rm = TRUE)
+  )
 
+df %>% 
+  mutate(
+    min = min(x, y, na.rm = TRUE),
+    max = max(x, y, na.rm = TRUE)
+  )
 
+#### Modular A
 
 
 
