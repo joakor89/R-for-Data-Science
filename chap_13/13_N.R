@@ -146,9 +146,17 @@ cut(x,
 y <- c(NA, -10, 5, 10, 30)
 cut(y, breaks = c(0, 5, 10, 15, 20))
 
+#### Cumulative & Rolling Aggregates
 
+x <- 1:10
 
+cumsum(x)
 
+cumprod(x)
+
+cummin(x)
+
+cummax(x)
 
 
 
