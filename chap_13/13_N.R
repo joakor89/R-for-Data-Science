@@ -130,11 +130,21 @@ round(x / 4) * 4
 
 round(x / 0.25) * 0.25
 
-####
+#### Cutting Numbers into Ranges
 
+x <- c(1, 2, 5, 10, 15, 20)
 
+cut(x, breaks = c(0, 5, 10, 15, 20))
 
+cut(x, breaks = c(0, 5, 10, 100))
 
+cut(x,
+    breaks = c(0, 5, 10, 15, 20),
+    labels = c("sm", "md", "lg", "xl")
+)
+
+y <- c(NA, -10, 5, 10, 30)
+cut(y, breaks = c(0, 5, 10, 15, 20))
 
 
 
