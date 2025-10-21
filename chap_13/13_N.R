@@ -217,9 +217,33 @@ df %>%
   group_by(id = consecutive_id(x)) %>% 
   slice_head(n = 1)
 
+### Numeric Summaries
 
+#### Center
 
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarize(
+    mean = mean(dep_delay, na.rm = TRUE),
+    median = median(dep_delay, na.rm = TRUE),
+    n = n(),
+    .groups = "drop"
+  ) %>% 
+  ggplot(aes(x = mean, y = median)) +
+  geom_abline(slope = 1, intercept = 0, color = "white", linewidth = 2) +
+  geom_point()
 
+#### Minimum, Maximum & Quantiles
+
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarize(
+    max = max(dep_delay, na.rm = TRUE),
+    q95 = quantile(dep_delay, 0.95, na.rm = TRUE),
+    .groups = "drop"
+  )
+  
+#### Spr
 
 
 
