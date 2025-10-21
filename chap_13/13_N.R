@@ -243,8 +243,18 @@ flights %>%
     .groups = "drop"
   )
   
-#### Spr
+#### Spread
 
+flights %>% 
+  group_by(origin, dest) %>% 
+  summarize(
+    distance_sd = IQR(distance),
+    n = n(),
+    .groups = "drop"
+  ) %>% 
+  filter(distance_sd > 0)
+
+#### Dis
 
 
 
