@@ -36,14 +36,13 @@ single_quote <- '\'' # or "'")"
 
 str_view(tricky)
 
-
 #### Other Special Characters
 
 x <- c("one\ntwo", "one\ttwo", "\u00b5", "\u0001f604")
 
 x
 
-
+##
 
 
 
