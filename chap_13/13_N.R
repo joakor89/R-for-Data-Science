@@ -254,8 +254,14 @@ flights %>%
   ) %>% 
   filter(distance_sd > 0)
 
-#### Dis
+#### Distribution
 
+flights %>% 
+  filter(dep_delay < 120) %>% 
+  ggplot(aes(x = dep_delay, group = interaction(day, month))) +
+  geom_freqpoly(binwidth = 5, alpha = 1/5)
+
+#### Positions
 
 
 
