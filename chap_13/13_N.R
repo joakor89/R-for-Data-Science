@@ -263,6 +263,18 @@ flights %>%
 
 #### Positions
 
+flights %>% 
+  group_by(year, month, day) %>%
+  summarize(
+    first_dep = first(dep_time, na_rm = TRUE),
+    fifth_dep = nth(dep_time, 5, na_rm = TRUE),
+    last_dep = last(dep_time, na_rm = TRUE)
+    )
+
+flights %>% 
+  group_by(year, month, day) %>% 
+  mutate(r = min_rank(sched_dep_time)) %>% 
+  filter(r %in% c(1, max(3)))
 
 
 
