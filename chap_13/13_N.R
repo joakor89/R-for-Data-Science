@@ -192,12 +192,30 @@ x == lag(x)
 
 #### Consecutive Identifiers
 
+events <- tibble(
+  time = c(0, 1, 2, 3, 5, 10, 12, 15, 17, 19, 20, 27, 28, 30)
+)
 
+events <- events %>% 
+  mutate(
+    diff = time - lag(time, default = first(time)),
+    has_gap = diff >= 5
+  )
 
+events
 
+events %>% mutate(
+  group = cumsum(has_gap)
+  )
+                 
+df <- tibble(
+  x = c("a", "a", "a", "b", "c", "c", "d", "e", "a", "a", "b", "b"),
+  y = c(1, 2, 3, 2, 4, 1, 3, 9, 4, 8, 10, 199)
+)
 
-
-
+df %>% 
+  group_by(id = consecutive_id(x)) %>% 
+  slice_head(n = 1)
 
 
 
