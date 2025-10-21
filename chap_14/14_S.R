@@ -42,12 +42,27 @@ x <- c("one\ntwo", "one\ttwo", "\u00b5", "\u0001f604")
 
 x
 
-##
+### Creating Many Strings from Data
 
+#### str_c()
 
+str_c("x", "y")
 
+str_c("x", "y", "z")
 
+str_c("Hello ", c("John", "Susan"))
 
+df <- tibble(name = c("Flora", "David", "Terra", NA))
+
+df %>% mutate(greeting = str_c("Hi ", name, "!"))
+
+df %>% 
+  mutate(
+    greeting1 = str_c("Hi ", coalesce(name, "you"), "!"),
+    greeting2 = coalesce(str_c("Hi ", name, "!"), "Hi!")
+  )
+
+####
 
 
 
