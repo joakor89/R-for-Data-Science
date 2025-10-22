@@ -209,9 +209,20 @@ babynames %>%
   filter(str_length(name) == 15) %>% 
   count(name, wt = n, sort = TRUE)
 
+#### Sub-setting
 
+x <- c("Apple", "Banana", "Pear")
+str_sub(x, 1, 3)
 
+str_sub(x, -3, -1)
 
+str_sub("a", 1, 5)
+
+babynames %>% 
+  mutate(
+    first = str_sub(name, 1, 1),
+    last = str_sub(name, -1, -1)
+  )
 
 
 
