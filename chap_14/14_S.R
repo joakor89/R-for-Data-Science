@@ -130,16 +130,71 @@ df4 %>%
     widths = c(year = 4, age = 2, state = 2)
   )
 
+#### Diagnosing Widening Problems
 
+df <- tibble(x = c("1-1-1", "1-1-2", "1-3", "1-3-2", "1"))
 
+df %>% 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z")
+  )
 
+debug <- df %>% 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_few = "debug"
+  )
 
+debug
 
+debug %>% filter(!x_ok)
 
+df %>% 
+  separate_wider_delim(
+    x, 
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_few = "align_start"
+  )
 
+df <- tibble(x = c("1-1-1", "1-1-2", "1-3-5-6", "1-3-2", "1-3-5-7-9"))
 
+df %>% 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z")
+  )
 
+debug <- df %>% 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_many = "debug"
+  )
 
+debug %>% filter(!x_ok)
+
+df %>% 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_many = "drop"
+  )
+
+df %>% 
+  separate_wider_delim(
+    x,
+    delim = "-",
+    names = c("x", "y", "z"),
+    too_many = "merge"
+  )
 
 
 
