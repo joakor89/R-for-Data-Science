@@ -240,6 +240,23 @@ read_csv(x1, locale = locale(encoding = "Latin1"))
 
 read_csv(x2, locale = locale(encoding = "Shift-JIS"))
 
+#### Letter Variations
+
+u <- c("\u00fc", "u\u0308")
+str_view(u)
+
+str_length(u)
+
+str_sub(u, 1, 1)
+
+u[[1]] == u[[2]]
+
+str_equal(u[[1]], u[[2]])
+
 #### 
+
+
+
+
 
 
