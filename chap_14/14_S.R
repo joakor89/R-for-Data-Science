@@ -62,8 +62,12 @@ df %>%
     greeting2 = coalesce(str_c("Hi ", name, "!"), "Hi!")
   )
 
-####
+#### str_glue()
 
+df %>% mutate(greeting = str_glue("Hi {name}!"))
 
+df %>% mutate(greeting = str_glue("{{Hi {name}!}}"))
+
+#### str_flatten()
 
 
