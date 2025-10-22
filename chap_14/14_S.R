@@ -224,14 +224,22 @@ babynames %>%
     last = str_sub(name, -1, -1)
   )
 
+### Non-English Text
 
+#### Encoding
 
+charToRaw("Hadley")
 
+x1 <- "text\nEl Ni\xf1o was particularly bad this year"
+read_csv(x1)
 
+x2 <- "text\n\x82\xb1\x82\xf1\x82\xc9\x82\xbf\x82\xcd"
+read_csv(x2)
 
+read_csv(x1, locale = locale(encoding = "Latin1"))
 
+read_csv(x2, locale = locale(encoding = "Shift-JIS"))
 
-
-
+#### 
 
 
