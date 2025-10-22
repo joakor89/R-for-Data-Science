@@ -90,12 +90,21 @@ df %>%
   group_by(name) %>% 
   summarize(fruits = str_flatten(fruit, ", "))
 
+### Extracting Data from Strings
 
+#### Separating into Rows
 
+df <- tibble(x = c("a,b,c", "d,e", "f"))
 
+df %>% 
+  separate_longer_delim(x, delim = ",")
 
+df2 <- tibble(x = c("1211", "131", "21"))
 
+df2 %>% 
+  separate_longer_position(x, width = 1)
 
+#### Sepa
 
 
 
