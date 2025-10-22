@@ -104,12 +104,31 @@ df2 <- tibble(x = c("1211", "131", "21"))
 df2 %>% 
   separate_longer_position(x, width = 1)
 
-#### Sepa
+#### Separating into Columns
 
+df3 <- tibble(x = c("a10.1.2022", "b10.2.2011", "e15.1.2015"))
 
+df3 %>% 
+  separate_wider_delim(
+    x,
+    delim = ".",
+    names = c("code", "edition", "year")
+  )
 
+df3 %>% 
+  separate_wider_delim(
+    x,
+    delim = ".",
+    names = c("code", NA, "year")
+  )
 
+df4 <- tibble(x = c("202215TX", "202122LA", "202325CA"))
 
+df4 %>% 
+  separate_wider_position(
+    x,
+    widths = c(year = 4, age = 2, state = 2)
+  )
 
 
 
