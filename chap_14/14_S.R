@@ -253,9 +253,15 @@ u[[1]] == u[[2]]
 
 str_equal(u[[1]], u[[2]])
 
-#### 
+#### Locale-Dependent Functions
 
+str_to_upper(c("i", "ı"))
 
+str_to_upper(c("i", "ı"), locale = "tr")
+
+str_sort(c("a", "c", "ch", "h", "z"))
+
+str_sort(c("a", "c", "ch", "h", "z"), locale = "cs")
 
 
 
