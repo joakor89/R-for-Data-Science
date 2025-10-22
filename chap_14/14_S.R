@@ -70,4 +70,65 @@ df %>% mutate(greeting = str_glue("{{Hi {name}!}}"))
 
 #### str_flatten()
 
+str_flatten(c("x", "y", "z"))
+
+str_flatten(c("x", "y", "z"), ", ")
+
+str_flatten(c("x", "y", "z"), ", ", last = ", and ")
+
+df <- tribble(
+  ~ name, ~ fruit,
+  "Carmen", "banana",
+  "Carmen", "apple",
+  "Marvin", "nectarine",
+  "Terence", "cantaloupe",
+  "Terence", "papaya",
+  "Terence", "mandaring",
+)
+
+df %>% 
+  group_by(name) %>% 
+  summarize(fruits = str_flatten(fruit, ", "))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
