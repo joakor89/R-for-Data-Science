@@ -196,9 +196,18 @@ df %>%
     too_many = "merge"
   )
 
+### Letters
 
+#### Length
 
+str_length(c("a", "R for data science", NA))
 
+babynames %>% 
+  count(length = str_length(name), wt = n)
+
+babynames %>% 
+  filter(str_length(name) == 15) %>% 
+  count(name, wt = n, sort = TRUE)
 
 
 
