@@ -45,14 +45,29 @@ babynames %>%
 
 #### Count Matches
 
+x <- c("apple", "banana", "pear")
+str_count(x, "p")
 
+str_count("abababa", "aba")
 
+str_view("abababa", "aba")
 
+babynames %>% 
+  count(name) %>% 
+  mutate(
+    vowels = str_count(name, "[aeiou]"),
+    consonants = str_count(name, "[^aeiou]")
+  )
 
+babynames %>% 
+  count(name) %>% 
+  mutate(
+    name = str_to_lower(name),
+    vowels = str_count(name, "aeiou"),
+    consonants = str_count(name, "[^aeiou]")
+  )
 
-
-
-
+#### Replace Values
 
 
 
