@@ -169,29 +169,70 @@ str_view(x, "\\w+")
 
 str_view(x, "\\W+")
 
-#### Quantifiers
+### Quantifiers
 
+#### Grouping & Capturing
 
+str_view(fruit, "(..)\\1")
 
+str_view(words, "^(..).*\\1$")
 
+sentences %>% 
+  str_replace("(\\w+) (\\w+) (\\w+)", "\\1 \\3 \\2") %>% 
+  str_view()
 
+sentences %>% 
+  str_match("the (\\w+) (\\w+)") %>% 
+  head()
 
+sentences %>% 
+  str_match("the (\\w+) (\\w+)") %>% 
+  as_tibble(.name_repair = "minimal") %>% 
+  set_names("match", "word1", "word2")
 
+x <- c("a gray cat", "a grey dog")
+str_match(x, "gr(e|a)y")
 
+str_match(x, "gr(?:e|a)y")
 
+### Pattern Control
 
+#### Regex Flags
 
+bananas <- c("banana", "Banana", "BANANA")
 
+str_view(bananas, "banana")
 
+str_view(bananas, regex("banana", ignore_case = TRUE))
 
+x <- "Line 1\nLine 2\nLine 3"
 
+str_view(x, ".Line")
 
+str_view(x, regex(".Line", dotall = TRUE))
 
+x <- "Line 1\nLine 2\nLine 3"
 
+str_view(x, "^Line")
 
+str_view(x, regex("^Line", multiline = TRUE))
 
+phone <- regex(
+  r"(
+  \(? #optional opening parens
+  (\d{3}) # area code
+  [)\-]? #optional closing parens or dash
+  \ ? # optional space
+  (\d{3}) # another three numbers
+  [\ -]? # optional space or dash
+  (\d{4}) # for more numbers
+  )",
+  comments = TRUE
+)
 
+str_extract(c("514-791-8141", "(123) 456 7890", "123456"), phone)
 
+#### 
 
 
 
