@@ -141,16 +141,35 @@ str_view("abc", c("$", "^", "\\b"))
 
 str_replace_all("abc", c("$", "^", "\\b"), "--")
 
-#### 
+#### Character Classes
 
+x <- "abcd ABCD 12345 -!@#%."
+str_view(x, "[abc]+")
 
+str_view(x, "[a-z]+")
 
+str_view(x, "[^a-z0-9]+")
 
+str_view("a-b-c", "[a-c]")
 
+str_view("a-b-c", "[a-c]")
 
+str_view("a-b-c", "[a\\-c]")
 
+x <- "abcd ABCD 12345 -!@#%."
+str_view(x, "\\d+")
 
+str_view(x, "\\D+")
 
+str_view(x, "\\s+")
+
+str_view(x, "\\S+")
+
+str_view(x, "\\w+")
+
+str_view(x, "\\W+")
+
+#### Quantifiers
 
 
 
