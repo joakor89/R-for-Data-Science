@@ -232,11 +232,31 @@ phone <- regex(
 
 str_extract(c("514-791-8141", "(123) 456 7890", "123456"), phone)
 
-#### 
+#### Fixed Matches
 
+str_view(c("", "a", "."), fixed("."))
 
+str_view("x X", "X")
 
+str_view("x X", fixed("X", ignore_case = TRUE))
 
+str_view("i İ ı I", fixed("İ", ignore_case = TRUE))
+
+str_view("i İ ı I", coll("İ", ignore_case = TRUE, locale = "tr"))
+
+##### Checking Work
+
+str_view(sentences, "^The")
+
+str_view(sentences, "^The\\b")
+
+str_view(sentences, "^She|He|It|They\\b")
+
+str_view(sentences, "^(She|He|It|They)\\b")
+
+pos <- c("He is a boy", "She had a good time")
+
+neg <- c("Shells come from the sea", "Hadley said 'It's a great day")
 
 
 
