@@ -77,9 +77,30 @@ str_remove_all(x, "[aeiou]")
 
 #### Extract Variables
 
+df <- tribble(
+  ~str,
+  "<Sheryl>-F_34",
+  "<Kisha>-F_45",
+  "<Brandon>-N_33",
+  "<Sharon>-F_38",
+  "<Penny>-F_58",
+  "<Justin>-M_41",
+  "<Patricia>-F_84",
+)
 
+df %>% 
+  separate_wider_regex(
+    str,
+    patterns = c(
+      "<",
+      name = "[A-Za-z]+",
+      ">-",
+      gender = ".", "_",
+      age = "[0-9]+"
+    )
+  )
 
-
+### Pattern Details
 
 
 
