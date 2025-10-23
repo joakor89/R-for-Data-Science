@@ -69,10 +69,13 @@ babynames %>%
 
 #### Replace Values
 
+x <- c("apple", "pear", "banana")
+str_replace_all(x, "[aeiou]", "-")
 
+x <- c("apple", "pear", "banana")
+str_remove_all(x, "[aeiou]")
 
-
-
+#### Extract Variables
 
 
 
