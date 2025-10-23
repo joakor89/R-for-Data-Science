@@ -122,14 +122,26 @@ str_view(c("abc", "a.c", "a*c", "a c"), "a[.]c")
 
 str_view(c("abc", "a.c", "a*c", "a c"), ".[*]c")
 
-#### A
+#### Anchors
 
+str_view(fruit, "^a")
 
+str_view(fruit, "a$")
 
+str_view(fruit, "apple")
 
+str_view(fruit, "^apple$")
 
+x <- c("summary(x)", "summarize(df)", "rowsum(x)", "sum(x)")
+str_view(x, "sum")
 
+str_view(x, "\\bsum\\b")
 
+str_view("abc", c("$", "^", "\\b"))
+
+str_replace_all("abc", c("$", "^", "\\b"), "--")
+
+#### 
 
 
 
