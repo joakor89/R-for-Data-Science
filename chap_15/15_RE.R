@@ -258,11 +258,29 @@ pos <- c("He is a boy", "She had a good time")
 
 neg <- c("Shells come from the sea", "Hadley said 'It's a great day")
 
+#### Boolean Operations
 
+str_view(words, "^[^aeiou]+$")
 
+str_view(words[!str_detect(words, "[aeiou]")])
 
+str_view(words, "a.*b|b.*a")
 
+words[str_detect(words, "a") & str_detect(words, "b")]
 
+words[str_detect(words, "a.*e.*i.*o.*u")]
+
+words[str_detect(words, "u.*o.*i.*e.*a")]
+
+words[
+  str_detect(words, "a") &
+    str_detect(words, "e") &
+    str_detect(words, "i") &
+    str_detect(words, "o") &
+    str_detect(words, "u")
+]
+
+#### 
 
 
 
