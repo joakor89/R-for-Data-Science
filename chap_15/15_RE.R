@@ -102,19 +102,27 @@ df %>%
 
 ### Pattern Details
 
+#### Escaping
 
+dot <- "\\."
 
+str_view(dot)
 
+str_view(c("abc", "a.c", "bef"), "a\\.c")
 
+x <- "a\\b"
 
+str_view(x)
 
+str_view(x, "\\\\")
 
+str_view(x, r"{\\}")
 
+str_view(c("abc", "a.c", "a*c", "a c"), "a[.]c")
 
+str_view(c("abc", "a.c", "a*c", "a c"), ".[*]c")
 
-
-
-
+#### A
 
 
 
