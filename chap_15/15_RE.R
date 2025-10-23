@@ -299,9 +299,13 @@ str_view(cols)
 pattern <- str_c("\\b(", str_flatten(cols, "|"), ")\\b")
 str_view(sentences, pattern)
 
+### Regular Expressions in Other Places
 
+####  Base R
 
+apropos("replace")
 
-          
+head(list.files(pattern = "\\.Rmd$"))          
+
  
   
