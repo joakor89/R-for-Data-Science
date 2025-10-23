@@ -280,15 +280,24 @@ words[
     str_detect(words, "u")
 ]
 
-#### 
+#### Creating a Pattern with Code
+
+str_view(sentences, "\\b(red|green|blue)\\b")
+
+rgb <- c("red", "green", "blue")
 
 
+str_c("\\b(", str_flatten(rgb, "|"), ")\\b")
 
+str_view(colors())
 
+cols <- colors()
+cols <- cols[!str_detect(cols, "\\d")]
 
+str_view(cols)
 
-
-
+pattern <- str_c("\\b(", str_flatten(cols, "|"), ")\\b")
+str_view(sentences, pattern)
 
 
 
