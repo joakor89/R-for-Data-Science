@@ -38,13 +38,20 @@ Jan,12
 Feb,56
 Mar,12"
 
+df <- read_csv(csv, col_types = cols(month = col_factor(month_levels)))
 
+df$month
 
+### General Social Survey
 
+gss_cat
 
+?gss_cat
 
+gss_cat %>% 
+  count(race)
 
-
+### 
 
 
 
