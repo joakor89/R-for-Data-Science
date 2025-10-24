@@ -108,13 +108,58 @@ gss_cat %>%
   ggplot(aes(x = marital)) +
   geom_bar()
 
+### Modifying Factor Levels
+
+gss_cat %>% count(partyid)
+
+gss_cat %>% 
+  mutate(
+    partyid = fct_recode(partyid,
+                         "Republican, strong"    = "Strong republican",
+                         "Republican, weak"      = "Not str republican",
+                         "Independent, near rep" = "Ind,near rep",
+                         "Independent, near dem" = "Ind,near dem",
+                         "Democrat, weak"        = "Not str democrat",
+                         "Democrat, strong"      = "Strong democrat"
+                         )
+  ) %>% 
+  count(partyid)
+
+gss_cat %>% 
+  mutate(
+    partyid = fct_recode(partyid,
+                         "Republican, strong"    = "Strong republican",
+                         "Republican, weak"      = "Not str republican",
+                         "Independent, near rep" = "Ind,near rep",
+                         "Independent, near dem" = "Ind,near dem",
+                         "Democrat, weak"        = "Not str democrat",
+                         "Democrat, strong"      = "Strong democrat",
+                         "Other"                 = "No answer",
+                         "Other"                 = "Don't know",
+                         "Other"                 = "Other party"
+    )
+  )
+
+gss_cat %>% 
+  mutate(
+    partyid = fct_collapse(partyid,
+                           "other" = c("No answer", "Don't know", "Other party"),
+                           "rep" = c("Strong republican", "Not str republican"),
+                           "ind" = c("Ind,near rep", "Independent", "Ind,near dem"),
+                           "dem" = c("Not str democrat", "Strong democrat"),
+                           )
+  ) %>% 
+  count(partyid)
+
+gss_cat %>% 
+  mutate(relig = fct_lump_lowfreq(relig)) %>% 
+  count(relig)
+
+gss_cat %>% 
+  mutate(relig = fct_lump_n(relig, n = 10)) %>% 
+  count(relig, sort = TRUE)
+
 ###
-
-
-
-
-
-
 
 
 
