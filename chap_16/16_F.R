@@ -159,7 +159,9 @@ gss_cat %>%
   mutate(relig = fct_lump_n(relig, n = 10)) %>% 
   count(relig, sort = TRUE)
 
-###
+### Ordered Factors
+
+ordered(c("a", "b", "c"))
 
 
 
