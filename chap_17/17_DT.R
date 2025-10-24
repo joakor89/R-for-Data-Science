@@ -76,9 +76,15 @@ flights_dt %>%
   ggplot(aes(x = dep_time)) +
   geom_freqpoly(binwidth = 600)
 
-#### 
+#### From Other Types
 
+as_datetime(today())
 
+as_date(now())
+
+as_datetime(60 * 60 * 10)
+
+as_date(365 * 10 + 2)
 
 
 
