@@ -51,18 +51,64 @@ gss_cat
 gss_cat %>% 
   count(race)
 
-### 
+### Modifying Factor Order
 
+relig_summary <- gss_cat %>% 
+  group_by(relig) %>% 
+  summarize(
+    tvhours = mean(tvhours, na.rm = TRUE),
+    n = n()
+  )
 
+ggplot(relig_summary, aes(x = tvhours, y = relig)) +
+  geom_point()
 
+ggplot(relig_summary, aes(x = tvhours, y = fct_reorder(relig, tvhours))) +
+  geom_point()
 
+relig_summary %>% 
+  mutate(
+    relig = fct_reorder(relig, tvhours)
+  ) %>% 
+  ggplot(aes(x = tvhours, y = relig)) +
+  geom_point()
 
+rincome_summary <- gss_cat %>% 
+  group_by(rincome) %>% 
+  summarize(
+    age = mean(age, na.rm = TRUE),
+    n = n()
+  )
 
+ggplot(rincome_summary, aes(x = age, y = fct_reorder(rincome, age))) +
+  geom_point()
 
+ggplot(rincome_summary, aes(x = age, y = fct_relevel(rincome, "Not applicable"))) +
+  geom_point()
 
+by_age <- gss_cat %>% 
+  filter(!is.na(age)) %>% 
+  count(age, marital) %>% 
+  group_by(age) %>% 
+  mutate(
+    prop = n / sum(n)
+  )
 
+ggplot(by_age, aes(x = age, y = prop, color = marital)) +
+  geom_line(linewidth = 1) +
+  scale_color_brewer(palette = "Set1")
 
+ggplot(by_age, aes(x = age, y = prop, color = fct_reorder2(marital, age, prop))) +
+  geom_line(linewidth = 1) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "marital")
 
+gss_cat %>% 
+  mutate(marital = marital %>% fct_infreq() %>% fct_rev()) %>% 
+  ggplot(aes(x = marital)) +
+  geom_bar()
+
+###
 
 
 
