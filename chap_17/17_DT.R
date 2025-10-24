@@ -28,6 +28,19 @@ read_csv(csv, col_types = cols(date = col_date("%d/%m/%y")))
 
 read_csv(csv, col_types = cols(date = col_date("%y/%m/%d")))
 
+#### From Strings
+
+ymd("2017-01-31")
+
+mdy("January 31st, 2017")
+
+dmy("31-Jan-2017")
+
+ymd_hms("2017-01-31 20:11:59")
+
+mdy_hm("01/31/3017 08:01")
+
+ymd("2017-01-31", tz = "UTC")
 
 
 
