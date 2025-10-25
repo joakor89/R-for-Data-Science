@@ -88,18 +88,38 @@ as_date(365 * 10 + 2)
 
 ### Date-Time Components
 
-#### 
+#### Getting Components
 
+datetime <- ymd_hms("2026-07-08 12:34:56")
 
+year(datetime)
 
+month(datetime)
 
+mday(datetime)
 
+yday(datetime)
 
+wday(datetime)
 
+month(datetime, label = TRUE)
 
+wday(datetime, label = TRUE, abbr = FALSE)
 
+flights_dt %>% 
+  mutate(wday = wday(dep_time, label = TRUE)) %>% 
+  ggplot(aes(x = wday)) +
+  geom_bar()
 
-
+flights_dt %>% 
+  mutate(minute = minute(dep_time)) %>% 
+  group_by(minute) %>% 
+  summarize(
+    avg_delay = mean(dep_delay, na.rm = TRUE),
+    n = n()
+  ) %>% 
+  ggplot(aes(x = minute, y = avg_delay)) +
+  geom_line()
 
 
 
