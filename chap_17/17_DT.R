@@ -197,27 +197,50 @@ dyears(1) + dweeks(12) + dhours(15)
 tomorrow <- today() + ddays(1)
 last_year <- today() - dyears(1)
 
-one_am <- ymd_hms("2026-03-08 01:00:00", tz = "America/New York")
+OlsonNames()
+
+one_am <- ymd_hms("2026-03-08 01:00:00", tz = "America/New_York")
 
 one_am
 
 #### Periods
 
+one_am
 
+one_am + days(1)
 
+hours(c(12, 24))
 
+days(7)
 
+months(1:6)
 
+10 * (months(6) + days(1))
 
+days(50) + hours(25) + minutes(2)
 
+ymd("2024-01-01") + dyears(1)
 
+ymd("2024-01-01") + years(1)
 
+one_am + ddays(1)
 
+one_am + days(1)
 
+flights_dt %>% 
+  filter(arr_time < dep_time)
 
+flights_dt <- flights_dt %>% 
+  mutate(
+    overnight = arr_time < dep_time,
+    arr_time = arr_time + days(overnight),
+    sched_arr_time = sched_arr_time + days(overnight)
+  )
 
+flights_dt %>% 
+  filter(arr_time < dep_time)
 
-
+#### Intervals
 
 
 
