@@ -258,19 +258,32 @@ y2024 / days(1)
 
 ### Time Zones
 
+Sys.timezone()
 
+length(OlsonNames())
 
+head(OlsonNames())
 
+x1 <- ymd_hms("2024-06-01 12:00:00", tz = "America/New_York")
+x1
 
+x2 <- ymd_hms("2024-06-01 18:00:00", tz = "Europe/Copenhagen")
+x2
 
+x3 <- ymd_hms("2024-06-02 04:00:00", tz = "Pacific/Auckland")
+x3
 
+x1 - x2
 
+x1 - x3
 
+x4 <- c(x1, x2, x3)
+x4
 
+x4a <- with_tz(x4, tzone = "Australia/Lord_Howe")
+x4a
 
+x4a - x4
 
-
-
-
-
-
+x4b <- force_tz(x4, tzone = "Australia/Lord_Howe")
+x4b
