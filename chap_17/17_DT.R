@@ -171,19 +171,37 @@ update(ymd("2023-02-01"), hour = 400)
 
 ### Time Spans
 
+#### Durations
 
+h_age <- today() - ymd("1979-10-14")
+h_age
 
+as.duration(h_age)
 
+dseconds(15)
 
+dminutes(10)
 
+dhours(c(12, 24))
 
+ddays(0:5)
 
+dweeks(3)
 
+dyears(1)
 
+2 * dyears(1)
 
+dyears(1) + dweeks(12) + dhours(15)
 
+tomorrow <- today() + ddays(1)
+last_year <- today() - dyears(1)
 
+one_am <- ymd_hms("2026-03-08 01:00:00", tz = "America/New York")
 
+one_am
+
+#### Periods
 
 
 
