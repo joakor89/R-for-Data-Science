@@ -150,6 +150,52 @@ flights_dt %>%
   ggplot(aes(x = dep_hour)) +
   geom_freqpoly(binwidth = 60 * 30)
 
+#### Modifying Components
+
+(datetime <- ymd_hms("2026-07-08 12:34:56"))
+
+year(datetime) <- 2030
+datetime
+
+month(datetime) <- 01
+datetime
+
+hour(datetime) <- hour(datetime) + 1
+datetime
+
+update(datetime, year = 2030, month = 2, mday = 2, hour = 2)
+
+update(ymd("2023-02-01"), mday = 30)
+
+update(ymd("2023-02-01"), hour = 400)
+
+### Time Spans
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
