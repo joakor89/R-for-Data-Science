@@ -61,9 +61,13 @@ stocks %>%
 
 #### Complete
 
+stocks %>% 
+  complete(year, qtr)
 
+stocks %>% 
+  complete(year = 2019:2021, qtr)
 
-
+#### 
 
 
 
