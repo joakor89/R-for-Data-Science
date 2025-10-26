@@ -45,6 +45,13 @@ sqrt(-1)
 
 ### Implicit Missing Values
 
+stocks <- tibble(
+  year = c(2020, 2020, 2020, 2020, 2021, 2021, 2021),
+  qtr = c(   1,    2,     3,    4,   2,    3,    4),
+  price = c(1.88, 0.59, 0.35, NA, 0.92, 0.17, 2.66)
+)
+
+#### Pivoting
 
 
 
