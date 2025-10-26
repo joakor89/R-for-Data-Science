@@ -67,10 +67,29 @@ stocks %>%
 stocks %>% 
   complete(year = 2019:2021, qtr)
 
-#### 
+#### Joins
 
+library(nycflights13)
 
+flights %>% 
+  distinct(faa = dest) %>% 
+  anti_join(airports)
 
+flights %>% 
+  distinct(tailnum) %>% 
+  anti_join(planes)
+
+### Joins
+
+health <- tibble(
+  name = c("Ikaia", "Oletta", "Leriah", "Dashay", "Tresaun"),
+  smoker = factor(c("no", "no", "no", "no", "no"), levels = c("yes", "no")),
+  age = c(34, 88, 75, 47, 56)
+)
+
+health %>% count(smoker)
+
+health %>% count(smoker, .drop = FALSE)
 
 
 
