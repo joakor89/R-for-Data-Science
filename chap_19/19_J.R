@@ -58,7 +58,42 @@ flights2 <- flights %>%
 
 flights2
 
-### 
+### Basic Joins
+
+#### Mutating Joins
+
+flights2 <- flights %>% 
+  select(year, time_hour, origin, dest, tailnum, carrier)
+
+flights2
+
+flights2 %>% 
+  left_join(airlines)
+
+flights2 %>% 
+  left_join(weather %>% select(origin, time_hour, temp, wind_speed))
+
+flights2 %>% 
+  left_join(planes %>% select(tailnum, type, engines, seats))
+
+flights2 %>% 
+  filter(tailnum == "N3ALAA") %>% 
+  left_join(planes %>% select(tailnum, type, engines, seats))
+
+#### Specifying Join Keys
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
