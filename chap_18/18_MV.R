@@ -25,15 +25,25 @@ coalesce(x, 0)
 x <- c(1, 4, 5, 7, -99)
 na_if(x, -99)
 
-#### Nan
+#### NaN
 
+x <- c(NA, NaN)
 
+x * 10
 
+x == 1
 
+is.na(x)
 
+0 / 0
 
+0 * Inf
 
+Inf - Inf
 
+sqrt(-1)
+
+### Implicit Missing Values
 
 
 
