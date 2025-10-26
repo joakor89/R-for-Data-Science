@@ -19,8 +19,13 @@ treatment %>%
 
 #### Fixed Values
 
+x <- c(1, 4, 5, 7, NA)
+coalesce(x, 0)
 
+x <- c(1, 4, 5, 7, -99)
+na_if(x, -99)
 
+#### Nan
 
 
 
