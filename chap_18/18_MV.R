@@ -53,6 +53,13 @@ stocks <- tibble(
 
 #### Pivoting
 
+stocks %>% 
+  pivot_wider(
+    names_from = qtr,
+    values_from = price
+  )
+
+#### Complete
 
 
 
