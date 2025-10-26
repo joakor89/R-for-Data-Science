@@ -45,12 +45,20 @@ weather %>%
 
 #### Surrogate Keys
 
+flights %>% 
+  count(time_hour, carrier, flight) %>% 
+  filter(n > 1)
 
+airports %>% 
+  count(alt, lat) %>% 
+  filter(n > 1)
 
+flights2 <- flights %>% 
+  mutate(id = row_number(), .before = 1)
 
+flights2
 
-
-
+### 
 
 
 
