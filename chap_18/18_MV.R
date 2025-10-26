@@ -79,7 +79,7 @@ flights %>%
   distinct(tailnum) %>% 
   anti_join(planes)
 
-### Joins
+### Factors & Empty Groups
 
 health <- tibble(
   name = c("Ikaia", "Oletta", "Leriah", "Dashay", "Tresaun"),
@@ -91,15 +91,40 @@ health %>% count(smoker)
 
 health %>% count(smoker, .drop = FALSE)
 
+ggplot(health, aes(x = smoker)) +
+  geom_bar() +
+  scale_x_discrete()
 
+ggplot(health, aes(x = smoker)) +
+  geom_bar() +
+  scale_x_discrete(drop = FALSE)
 
+health %>% 
+  group_by(smoker, .drop = FALSE) %>% 
+  summarize(
+    n = n(),
+    mean_age = mean(age, na.rm = TRUE),
+    min_age = min(age, na.rm = TRUE),
+    max_age = max(age, na.rm = TRUE),
+    sd_age = sd(age, na.rm = TRUE)
+  )
 
+x1 <- c(NA, NA)
+length(x1)
 
+x2 <- numeric()
+length(x2)
 
-
-
-
-
+health %>% 
+  group_by(smoker) %>% 
+  summarize(
+    n = n(),
+    mean_age = mean(age, na.rm = TRUE),
+    min_age = min(age, na.rm = TRUE),
+    max_age = max(age, na.rm = TRUE),
+    sd_age = sd(age, na.rm = TRUE)
+  ) %>% 
+  complete(smoker)
 
 
 
