@@ -96,9 +96,21 @@ flights2 %>%
 
 #### Filtering Joins
 
+airports %>% 
+  semi_join(flights2, join_by(faa == origin))
 
+airports %>% 
+  semi_join(flights2, join_by(faa == dest))
 
+flights2 %>% 
+  anti_join(airports, join_by(dest == faa)) %>% 
+  distinct(dest)
 
+flights2 %>% 
+  anti_join(planes, join_by(tailnum)) %>% 
+  distinct(tailnum)
+
+### How Do Joins Work?
 
 
 
