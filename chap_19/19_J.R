@@ -171,13 +171,29 @@ employees %>%
 
 #### Overlap Joins
 
+parties <- tibble(
+  q = 1:4,
+  party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03")),
+  start = ymd(c("2022-01-01", "2022-04-04", "2022-07-11", "2022-10-03")),
+  end = ymd(ymd(c("2022-04-03", "2022-07-11", "2022-10-02", "2022-12-31")))
+)
+
+parties
+
+parties %>% 
+  inner_join(parties, join_by(overlaps(start, end, start, end), q < q)) %>% 
+  select(start.x, end.x, start.y, end.y)
 
 
+parties <- tibble(
+  q = 1:4,
+  party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03")),
+  start = ymd(c("2022-01-01", "2022-04-04", "2022-07-11", "2022-10-03")),
+  end = ymd(ymd(c("2022-04-03", "2022-07-10", "2022-10-02", "2022-12-31")))
+)
 
-
-
-
-
+employees %>% 
+  inner_join(parties, join_by(between(birthday, start, end)), unmatched = "error")
 
 
 
