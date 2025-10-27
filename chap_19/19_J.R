@@ -149,11 +149,27 @@ df <- tibble(id = 1:4, name = c("John", "Simon", "Tracy", "Max"))
 
 df %>% left_join(df, join_by(id < id))
 
+#### Rolling Joins
 
+parties <- tibble(
+  q = 1:4,
+  party = ymd(c("2022-01-10", "2022-04-04", "2022-07-11", "2022-10-03"))
+)
 
+employees <- tibble(
+  name = sample(babynames::babynames$name, 100),
+  birthday = ymd("2022-01-01") + (sample(365, 100, replace = TRUE) - 1) 
+)
 
+employees
 
+employees %>% 
+  left_join(parties, join_by(closest(birthday >= party)))
 
+employees %>% 
+  anti_join(parties, join_by(closest(birthday >= party)))
+
+#### Overlap Joins
 
 
 
