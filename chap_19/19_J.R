@@ -138,6 +138,12 @@ df1 %>%
 
 x %>% left_join(y, by = "key", keep = TRUE)
 
+#### Cross Joins
+
+df <- tibble(name = c("John", "Simon", "Tracy", "Max"))
+df %>% cross_join(df)
+
+#### Inequality Joins
 
 
 
