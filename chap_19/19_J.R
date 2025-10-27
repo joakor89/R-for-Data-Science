@@ -145,6 +145,9 @@ df %>% cross_join(df)
 
 #### Inequality Joins
 
+df <- tibble(id = 1:4, name = c("John", "Simon", "Tracy", "Max"))
+
+df %>% left_join(df, join_by(id < id))
 
 
 
