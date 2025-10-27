@@ -82,7 +82,19 @@ flights2 %>%
 
 #### Specifying Join Keys
 
+flights2 %>% 
+  left_join(planes)
 
+flights2 %>% 
+  left_join(planes, join_by(tailnum))
+
+flights2 %>% 
+  left_join(airports, join_by(dest == faa))
+
+flights2 %>% 
+  left_join(airports, join_by(origin == faa))
+
+#### Filtering Joins
 
 
 
