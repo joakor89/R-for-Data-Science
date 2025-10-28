@@ -94,7 +94,19 @@ deaths
 
 readl_excel(deaths_path, range = "A5:F15")
 
-#### Data Types
+#### Writing Excel
+
+bake_sale <- tibble(
+  item = factor(c("brownie", "cupcake", "cookie")),
+  quantity = c(10, 5, 8)
+)
+
+bake_sale
+
+write_xlsx(bake_sale, path = "data/bake-sale.xlsx")
+
+read_excel("data/bake-sale.xlsx")
+
 
 
 
