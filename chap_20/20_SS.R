@@ -136,6 +136,12 @@ deaths_url <- gs4_example("death")
 deaths <-read_sheet(deaths_url, range = "A5:F15")
 deaths
 
+#### Writing to Google Sheets
+
+write_sheet(bale_sale, ss = "bake-sale")
+
+write_sheet(bake_sale, ss = "bake_sale", sheet = "Sales")
+
 
 
 
