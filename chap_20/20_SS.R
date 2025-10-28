@@ -61,18 +61,40 @@ students
 
 ### Reading Worksheets
 
-write.xlsx(penguins, "/Users/joaquinromero/desktop/R4DS/data/penguins.xlsx")
 penguins
 
+write.xlsx(penguins, "/Users/joaquinromero/desktop/R4DS/data/penguins.xlsx", sheet = "Torgesen Island")
+
+penguins_torgersen <- read_excel(
+  "data/penguins.xlsx", sheet = "Torgersen Island", na = "NA"
+)
+
+penguins_torgersen
+
+excel_sheets("data/penguins.xlsx")
+
+penguins_biscoe <- read_excel("data/penguins.xlsx", sheet = "Biscoe Island", na = "NA")
+penguins_dream <- read_excel("data/penguins.xlsx", sheet = "Dream Island", na = "NA")
 
 
+dim(penguins_torgersen)
 
+dim(penguins_biscoe)
 
+dim(penguins_dream)
 
+penguins <- bind_rows(penguins_torgersen, penguins_biscoe, penguins_dream)
 
+#### Reading Part of a Sheet
 
+deaths_path <- readxl_example("death.xlsx")
+deaths <- read_excel(deaths_path)
 
+deaths
 
+readl_excel(deaths_path, range = "A5:F15")
+
+#### Data Types
 
 
 
