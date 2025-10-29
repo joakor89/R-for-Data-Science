@@ -4,6 +4,7 @@
 
 library(DBI)
 library(dbplyr)
+library(duckdb)
 library(tidyverse)
 
 ### Database Basics 
@@ -32,8 +33,21 @@ dbWriteTable(con, "diamonds", ggplot2::diamonds)
 
 #### DBI Basics
 
+dbListTables(con)
 
+con %>% 
+  dbReadTable("diamonds") %>% 
+  as_tibble()
 
+sql <- "
+SELECT carat, cut, clarity, color, price
+FROM diamonds
+WHERE price > 15000
+"
+
+as_tibble(dbGetQuery(con, sql))
+
+#### dbplyr Basics
 
 
 
