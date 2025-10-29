@@ -21,9 +21,11 @@ con <- DBI::dbConnect(
 )
 
 #### ITB
-con
+con <- DBI::dbConnect(duckdb::duckdb())
 
+con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "duckdb")
 
+#### 
 
 
 
