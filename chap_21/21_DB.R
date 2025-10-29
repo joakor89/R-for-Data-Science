@@ -25,8 +25,12 @@ con <- DBI::dbConnect(duckdb::duckdb())
 
 con <- DBI::dbConnect(duckdb::duckdb(), dbdir = "duckdb")
 
-#### 
+#### Load Some Data
 
+dbWriteTable(con, "mpg", ggplot2::mpg)
+dbWriteTable(con, "diamonds", ggplot2::diamonds)
+
+#### DBI Basics
 
 
 
