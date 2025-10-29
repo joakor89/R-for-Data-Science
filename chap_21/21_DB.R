@@ -49,13 +49,29 @@ as_tibble(dbGetQuery(con, sql))
 
 #### dbplyr Basics
 
+diamonds_db <- tbl(con, "diamonds")
+diamonds_db
 
+diamonds_db <- tbl(con, in_schema("sales", "diamonds"))
+diamonds_db <- tbl(
+  con, in_catalog("north_america", "sale", "diamonds")
+)
 
+diamonds_db <- tbl(con, sql("SELECT * FROM diamonds"))
 
+big_diamonds_db <- diamonds_db %>% 
+  filter(price > 15000) %>% 
+  select(carat::clarity, price)
 
+big_diamonds_db %>% 
+  show_query()
 
+big_diamonds <- big_diamonds_db %>% 
+  collect()
 
+big_diamonds
 
+### SQL
 
 
 
