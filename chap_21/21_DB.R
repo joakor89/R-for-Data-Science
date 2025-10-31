@@ -157,7 +157,19 @@ flights %>%
   arrange(year, month, day, desc(dep_delay)) %>% 
   show_query()
 
+#### Subqueries
 
+flights %>% 
+  mutate(
+    year1 = year + 1,
+    year2 = year1 + 1
+  ) %>% 
+  show_query()
+
+flights %>% 
+  mutate(year1 = year + 1) %>% 
+  filter(year1 == 2014) %>% 
+  show_query()
 
 
 
