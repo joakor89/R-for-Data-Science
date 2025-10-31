@@ -154,7 +154,7 @@ diamonds_db %>%
 #### ORDER BY
 
 flights %>% 
-  arrange(year)
+  arrange(year, month)
 
 
 
