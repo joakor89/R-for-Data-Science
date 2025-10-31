@@ -151,10 +151,12 @@ diamonds_db %>%
   filter(n > 100) %>% 
   show_query()
 
-#### ORDER BY
+### ORDER BY
 
 flights %>% 
-  arrange(year, month)
+  arrange(year, month, day, desc(dep_delay)) %>% 
+  show_query()
+
 
 
 
