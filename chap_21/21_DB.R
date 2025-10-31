@@ -171,6 +171,13 @@ flights %>%
   filter(year1 == 2014) %>% 
   show_query()
 
+#### Joins
+
+flights %>% 
+  left_join(planes %>% rename(year_built = year), by = "tailnum") %>% 
+  show_query()
+
+### Functions Translations
 
 
 
