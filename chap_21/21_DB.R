@@ -15,6 +15,7 @@ con <- DBI::dbConnect(
   RMariaDB::MariaDB(),
   username = "foo"
 )
+
 con <- DBI::dbConnect(
   RPostgres::Postgres(),
   hostname = "databases.mycompany.com",
@@ -72,8 +73,12 @@ big_diamonds <- big_diamonds_db %>%
 big_diamonds
 
 ### SQL
+dbplyr::copy_nycflights13(con)
 
+flights <- tbl(con, "flights")
+planes <- tbl(con, "planes")
 
+#### SQL Basic
 
 
 
