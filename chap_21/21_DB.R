@@ -179,13 +179,61 @@ flights %>%
 
 ### Functions Translations
 
+summarize_query <- function(df, ...) {
+  df %>% 
+    summarize(...) %>% 
+    show_query()
+}
+mutate_query <- function(df, ...) {
+  df %>% 
+    mutate(..., .keep = "none") %>% 
+    show_query()
+}
 
+flights %>% 
+  group_by(year, month, day) %>% 
+  summarize_query(
+    mean = mean(arr_delay, na.rm = TRUE),
+    median = median(arr_delay, na.rm = TRUE)
+  )
 
+flights %>% 
+  group_by(year, month, day) %>% 
+  mutate_query(
+    mean = mean(arr_delay, na.rm = TRUE),
+  )
 
+flights %>% 
+  group_by(dest) %>% 
+  arrange(time_hour) %>% 
+  mutate_query(
+    lead = lead(arr_delay),
+    lag = lag(arr_delay)
+  )
 
+flights %>% 
+  mutate_query(
+    description = if_else(arr_delay > 0, "delayed", "on-time")
+  )
 
+flights %>% 
+  mutate_query(
+    description = 
+      case_when(
+        arr_delay < -5 ~ "early",
+        arr_delay < 5 ~ "on-time",
+        arr_delay >= 5 ~ "late"
+      )
+  )
 
-
+flights %>% 
+  mutate_query(
+    description = cut(
+      arr_delay,
+      breaks = c(-Inf, -5, 5, Inf),
+      labels = c("early", "on-time", "late")
+    )
+  )
 
 
 
